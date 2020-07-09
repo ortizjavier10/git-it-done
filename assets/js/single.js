@@ -1,4 +1,6 @@
 var issueContainerEl = document.querySelector("#issues-container");
+var limitWarningEl = document.querySelector("#limit-warning");
+
 
 var getRepoIssues = function(repo) {
     //console.log(repo);
@@ -14,6 +16,9 @@ var getRepoIssues = function(repo) {
         else {
           alert("There was a problem with your request!");
         }
+
+        // check if API has paginated issues
+        displayWarning(repo);
     });
 };
 
@@ -53,7 +58,20 @@ var displayIssues = function(issues) {
     }
 };
 
-getRepoIssues("facebook/.github");
+var displayWarning = function(repo) {
+    // add text to warning container
+    limitWarningEl.textContent = "To see more than 30 issues, visit ";
+
+    var linkEl = document.createElement("a");
+    linkEl.textContent = "See More Issues on GitHub.com";
+    linkEl.setAttribute("href", "https://github.com/" + repo + "/issues");
+    linkEl.setAttribute("targer", "_blank");
+
+    // appeend to warning container
+    limitWarningEl.appendChild(linkEl);
+};
+
+getRepoIssues("facebook/react");
 
 
 
