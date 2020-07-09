@@ -37,7 +37,8 @@ var getRepoIssues = function(repo) {
                     displayWarning(repo);
                 }
             });
-        } else {
+          } 
+          else {
         // if not successful, redirect to homepage
         document.location.replace("./index.html");
         }
@@ -95,7 +96,7 @@ var displayWarning = function(repo) {
 
 
 getRepoName();
-getRepoIssues();
+// getRepoIssues();
 
 
 
